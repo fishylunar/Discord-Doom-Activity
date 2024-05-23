@@ -25,13 +25,14 @@ Tweak the performance a little, and maybe add some new features using the differ
 <img src="https://github.com/fishylunar/Discord-Doom-Activity/blob/main/Repo%20Resources/invite.png?raw=true" height="200">
 
 
-* #### Gif Showcase      |       Server Activity
-<p float=middle">
+* #### Gif Showcase 
+
 <img src="https://github.com/fishylunar/Discord-Doom-Activity/blob/main/Repo%20Resources/showcase.gif" height="256">
-<img src="https://github.com/fishylunar/Discord-Doom-Activity/blob/main/Repo%20Resources/server-activity.png" height="256">
-</p>
 
 Please note: The gif is 12 fps meanwhile, the actual performance is way better.
+
+* #### Server Activity
+<img src="https://github.com/fishylunar/Discord-Doom-Activity/blob/main/Repo%20Resources/server-activity.png" height="256">
 
 * #### Activity Shelf
 <p float=middle">
