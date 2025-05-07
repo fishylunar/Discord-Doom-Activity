@@ -14,11 +14,11 @@ const port = 3001;
 app.use(express.json());
 
 // Serve static files from the client directory
-app.use(express.static(path.join(__dirname, "../client")));
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
 // Fallback to index.html for SPA routing
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/index.html"));
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
 app.post("/api/token", async (req, res) => {
