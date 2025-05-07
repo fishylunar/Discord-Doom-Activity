@@ -21,28 +21,22 @@ ENV CLIENT_PORT=8080
 # Example: docker run -e VITE_DISCORD_CLIENT_ID=your_id -e DISCORD_CLIENT_SECRET=your_secret ...
 
 # --- Client Setup ---
-# Copy client package.json and package-lock.json (if available) to leverage Docker cache
-COPY client/package*.json ./client/
+# Copy the entire client directory
+COPY client/ /usr/src/app/client/
 # Set working directory for client
 WORKDIR /usr/src/app/client
 # Install client dependencies, including devDependencies
 RUN npm install --include=dev
-# Copy the rest of the client application code
-COPY client/ ./
 # Build the client application
 RUN npm run build
 
 # --- Server Setup ---
-# Reset working directory to the app root before copying server files
-WORKDIR /usr/src/app
-# Copy server package.json and package-lock.json (if available)
-COPY server/package*.json ./server/
+# Copy the entire server directory
+COPY server/ /usr/src/app/server/
 # Set working directory for server
 WORKDIR /usr/src/app/server
 # Install server dependencies
 RUN npm install
-# Copy the rest of the server application code
-COPY server/ ./
 
 # --- Expose Ports ---
 # Expose the server port (defined by SERVER_PORT)
