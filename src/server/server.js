@@ -2,12 +2,14 @@ import express from "express";
 import fetch from "node-fetch";
 import path from "path";
 import { fileURLToPath } from "url";
-
+import dotenv from "dotenv";
+dotenv.config({ path: "../../.env" });
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = 3001;
+
 app.use(express.json());
 
 // Serve static files from the client directory
