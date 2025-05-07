@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "${SERVER_PORT}:${SERVER_PORT}"
+      - "${CLIENT_PORT}:${CLIENT_PORT}"
+    environment:
+      NODE_ENV: production
+      SERVER_PORT: ${SERVER_PORT}
+      CLIENT_PORT: ${CLIENT_PORT}
+      VITE_DISCORD_CLIENT_ID: ${VITE_DISCORD_CLIENT_ID}
+      DISCORD_CLIENT_SECRET: ${DISCORD_CLIENT_SECRET}
+    # If you have a .env file in the same directory as your docker-compose.yml,
+    # Docker Compose will automatically load it.
+    # Alternatively, you can specify an env_file:
+    # env_file:
+    #   - .env
+    volumes:
+      - ./client:/usr/src/app/client
+      - ./server:/usr/src/app/server
+      # If you want to persist node_modules, you can add these, but it might complicate things
+      # if your local node_modules are for a different architecture.
+      # - /usr/src/app/client/node_modules
+      # - /usr/src/app/server/node_modules
+
+# You would typically create a .env file in the same directory as this docker-compose.yml
+# with the following content:
+#
+# SERVER_PORT=3001
+# CLIENT_PORT=8080
+# VITE_DISCORD_CLIENT_ID=your_discord_client_id_here
+# DISCORD_CLIENT_SECRET=your_discord_client_secret_here
+#

@@ -12,8 +12,6 @@ node_modules
 # Sensitive environment variables
 .env
 
-client/bin/*
-
 # Modules + built files
 node_modules
 dist
