@@ -54,4 +54,4 @@ WORKDIR /usr/src/app
 # The server's start script (npm start in server/package.json) will be used.
 # The client's preview script (npm run preview in client/package.json) will be used with the specified port.
 # Note: Ensure your server.js uses process.env.SERVER_PORT as suggested.
-CMD ["concurrently", "-k", "--names", "SERVER,CLIENT", "npm:start --prefix server", "npm:preview --prefix client -- --port ${CLIENT_PORT}"]
+CMD ["concurrently", "-k", "--names", "SERVER,CLIENT", "npm:start --prefix server", "npm:preview --prefix client -- --port 4173"]
