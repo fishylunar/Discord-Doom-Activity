@@ -25,8 +25,8 @@ ENV CLIENT_PORT=8080
 COPY client/package*.json ./client/
 # Set working directory for client
 WORKDIR /usr/src/app/client
-# Install client dependencies
-RUN npm install
+# Install client dependencies, including devDependencies
+RUN npm install --include=dev
 # Copy the rest of the client application code
 COPY client/ ./
 # Build the client application
