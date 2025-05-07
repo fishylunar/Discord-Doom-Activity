@@ -11,7 +11,8 @@ RUN npm install -g concurrently
 # These can be overridden at runtime (e.g., docker run -e SERVER_PORT=3005 ...)
 ENV NODE_ENV=production
 ENV SERVER_PORT=3001
-ENV CLIENT_PORT=8080 # Port for the client's preview server
+# Port for the client's preview server
+ENV CLIENT_PORT=8080
 
 # --- IMPORTANT ---
 # The following environment variables MUST be provided at runtime for the application to function correctly:
