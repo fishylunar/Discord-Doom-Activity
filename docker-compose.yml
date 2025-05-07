@@ -1,33 +1,18 @@
 version: '3.8'
 services:
-  client:
+  app:
     build:
       context: .
       dockerfile: Dockerfile
-    command: npm:preview --prefix client -- --port 8080
-    ports:
-      - "8080:8080"
-    environment:
-      NODE_ENV: production
-      VITE_DISCORD_CLIENT_ID: ${VITE_DISCORD_CLIENT_ID}
-      DISCORD_CLIENT_SECRET: ${DISCORD_CLIENT_SECRET}
-    volumes:
-      - ./client:/usr/src/app/client
-
-  server:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: npm:start --prefix server
+    command: npm:start --prefix combined/server
     ports:
       - "3001:3001"
     environment:
       NODE_ENV: production
-      SERVER_PORT: 3001
       VITE_DISCORD_CLIENT_ID: ${VITE_DISCORD_CLIENT_ID}
       DISCORD_CLIENT_SECRET: ${DISCORD_CLIENT_SECRET}
     volumes:
-      - ./server:/usr/src/app/server
+      - ./src:/usr/src/app/combined
 
 # You can define a .env file in the same directory as this docker-compose.yml
 # to provide the required environment variables.

@@ -7,32 +7,23 @@ WORKDIR /usr/src/app
 # Install concurrently globally to run multiple commands
 RUN npm install -g concurrently
 
-# --- Client Setup ---
-# Copy the client directory
-COPY client/ /usr/src/app/client/
-# Set working directory for client
-WORKDIR /usr/src/app/client
-# Install client dependencies, including devDependencies
-RUN npm install --include=dev
+# Copy the src directory
+COPY src/ /usr/src/app/src/
+
+# Set working directory for the server
+WORKDIR /usr/src/app/src/server
+
+# Install dependencies for both client and server
+RUN npm install --prefix ../client --include=dev && npm install
+
 # Build the client application
-RUN npm run build
+RUN npm run build --prefix ../client
 
-# --- Server Setup ---
-# Copy the server directory
-COPY server/ /usr/src/app/server/
-# Set working directory for server
-WORKDIR /usr/src/app/server
-# Install server dependencies
-RUN npm install
-
-# --- Expose Ports ---
-# Expose the server port (3001) and client preview port (8080)
+# Expose the unified server port
 EXPOSE 3001
-EXPOSE 8080
 
-# --- Start Command ---
 # Set the main working directory
-WORKDIR /usr/src/app
+WORKDIR /usr/src/app/src/server
 
-# Start both the server and the client preview server
-CMD ["concurrently", "npm:start --prefix server", "npm:preview --prefix client -- --port 8080"]
+# Start the unified application
+CMD ["npm", "start"]

@@ -1,11 +1,25 @@
 import express from "express";
 import dotenv from "dotenv";
 import fetch from "node-fetch";
+import path from "path";
+import { fileURLToPath } from "url";
+
 dotenv.config({ path: "../.env" });
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const port = 3001;
 app.use(express.json());
+
+// Serve static files from the client directory
+app.use(express.static(path.join(__dirname, "../client")));
+
+// Fallback to index.html for SPA routing
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/index.html"));
+});
 
 app.post("/api/token", async (req, res) => {
   const response = await fetch(`https://discord.com/api/oauth2/token`, {
