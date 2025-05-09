@@ -2,6 +2,7 @@ import { DiscordSDK } from "@discord/embedded-app-sdk";
 
 // import "./style.css";
 import '../bin/js-dos.css'
+
 let auth;
 
 const discordSdk = new DiscordSDK(import.meta.env.VITE_DISCORD_CLIENT_ID, {
@@ -46,13 +47,13 @@ setupDiscordSdk().then(() => {
   })
 
    // Run the actual game:
-  emulators.pathPrefix = "../bin/";
-  Dos(document.getElementById("gameUI"), {
-    style: "none",
-    noSideBar: true,
-    noFullscreen: true,
-    noSocialLinks: true
-  } ).run("../bin/doom.jsdos")
+   emulators.pathPrefix = "/lib/";
+   Dos(document.getElementById("gameUI"), {
+     style: "none",
+     noSideBar: true,
+     noFullscreen: true,
+     noSocialLinks: true
+   }).run( window.origin + "/lib/doom.jsdos");
 });
 
 async function setupDiscordSdk() {

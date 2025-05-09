@@ -15,9 +15,9 @@ app.use(express.json());
 // Serve static files from the client directory
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
-// Fallback to index.html for SPA routing
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+app.get("/lib/*", (req, res) => {
+  const filePath = path.join(__dirname, "../client/bin", req.path.replace("/lib/", ""));
+  res.sendFile(filePath);
 });
 
 app.post("/api/token", async (req, res) => {
