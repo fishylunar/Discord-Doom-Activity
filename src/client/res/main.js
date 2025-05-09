@@ -5,6 +5,7 @@ import '../bin/js-dos.css'
 
 let auth;
 
+console.log("Client ID: ", import.meta.env.VITE_DISCORD_CLIENT_ID);
 const discordSdk = new DiscordSDK(import.meta.env.VITE_DISCORD_CLIENT_ID, {
   disableConsoleLogOverride: false
 });
