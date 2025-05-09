@@ -47,13 +47,13 @@ setupDiscordSdk().then(() => {
   })
 
    // Run the actual game:
-   emulators.pathPrefix = "/lib/";
+   emulators.pathPrefix = "/.proxy/lib/";
    Dos(document.getElementById("gameUI"), {
      style: "none",
      noSideBar: true,
      noFullscreen: true,
      noSocialLinks: true
-   }).run( window.origin + "/lib/doom.jsdos");
+   }).run( window.origin + "/.proxy/lib/doom.jsdos");
 });
 
 async function setupDiscordSdk() {
