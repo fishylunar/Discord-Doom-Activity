@@ -220,6 +220,7 @@
     -ms-user-select: none;
     user-select: none;
     touch-action: none;
+    display: none!important;
 }
 
 .emulator-keyboard {

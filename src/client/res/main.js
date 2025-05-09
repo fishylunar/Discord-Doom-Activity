@@ -3,6 +3,16 @@ import { DiscordSDK } from "@discord/embedded-app-sdk";
 // import "./style.css";
 import '../bin/js-dos.css'
 
+if (window.origin.includes("localhost")) {
+  emulators.pathPrefix = "/.proxy/lib/";
+  Dos(document.getElementById("gameUI"), {
+    style: "none",
+    noSideBar: true,
+    noFullscreen: true,
+    noSocialLinks: true
+  }).run( window.origin + "/.proxy/lib/doom.jsdos");
+}
+
 let auth;
 let clientId ="1242925143672619150" // import.meta.env.VITE_DISCORD_CLIENT_ID;
 const discordSdk = new DiscordSDK(clientId, {

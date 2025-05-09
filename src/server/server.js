@@ -15,6 +15,13 @@ app.use(express.json());
 // Serve static files from the client directory
 app.use(express.static(path.join(__dirname, "../client/dist")));
 
+app.get("/.proxy/*", (req, res) => {
+  // just redirect to a url where .proxy is removed
+  req.url = req.url.replace("/.proxy", "");
+  res.redirect(req.url);
+}
+);
+
 app.get("/lib/*", (req, res) => {
   const filePath = path.join(__dirname, "../client/bin", req.path.replace("/lib/", ""));
   res.sendFile(filePath);
