@@ -4,9 +4,8 @@ import { DiscordSDK } from "@discord/embedded-app-sdk";
 import '../bin/js-dos.css'
 
 let auth;
-
-console.log("Client ID: ", import.meta.env.VITE_DISCORD_CLIENT_ID);
-const discordSdk = new DiscordSDK(import.meta.env.VITE_DISCORD_CLIENT_ID, {
+let clientId ="1242925143672619150" // import.meta.env.VITE_DISCORD_CLIENT_ID;
+const discordSdk = new DiscordSDK(clientId, {
   disableConsoleLogOverride: false
 });
 
@@ -62,7 +61,7 @@ async function setupDiscordSdk() {
 
   // Authorize with Discord client
   const { code } = await discordSdk.commands.authorize({
-    client_id: import.meta.env.VITE_DISCORD_CLIENT_ID,
+    client_id: clientId,
     response_type: "code",
     state: "",
     prompt: "none",
